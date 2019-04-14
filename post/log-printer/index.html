@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Log printer | Hve Notes</title>
+<link rel="shortcut icon" href="https://kexuejin.github.io/favicon.ico">
+<link rel="stylesheet" href="https://kexuejin.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://kexuejin.github.io">
+  <img class="avatar" src="https://kexuejin.github.io/images/avatar.png" alt="" width="80px" height="80px">
+  </a>
+  <h1 class="site-title">
+    Hve Notes
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Log printer
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-04-11 ·
+              </time>
+              
+            </div>
+            <div class="post-content">
+              <ol>
+<li>
+<p>非生产环境，所以日志都打开
+生产环境，DEBUG版本是都打开， RELEAE版本走之前逻辑</p>
+</li>
+<li>
+<p>权限相关的都打印(INFO)
+用户权限<br>
+应用权限</p>
+</li>
+<li>
+<p>重要流程信息打印(INFO)
+收发消息，通知，incoming call</p>
+</li>
+<li>
+<p>错误信息打印（ERROR）</p>
+</li>
+<li>
+<p>非预期结果打印（WARN）</p>
+</li>
+<li>
+<p>隐私信息
+Log.i(&quot;call phone&quot;)
+SLog.i(&quot;number:186111111111&quot;)
+非生产环境： 打印SLog
+生产环境：DEBUG打印， RELEASE 不打印SLog</p>
+<p>TAG, 功能
+File + Function + Line ==&gt;Android
+Message</p>
+</li>
+</ol>
+
+            </div>
+          </article>
+        </div>
+    
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by Hve Notes
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
