@@ -69,8 +69,17 @@
             <div class="post-content">
               <ol>
 <li>
-<p>非生产环境，所以日志都打开
-生产环境，DEBUG版本是都打开， RELEAE版本走之前逻辑</p>
+<p><strong>默认的日志配置</strong>
+Base Log                                          Advance Log      Uploading Log
+生产+Release   	         关(未登录或rc用户 )                                 关                       关
+非生产+Release	         开                                                              开                       开
+Debug                         开                                                              开                       开</p>
+<pre><code> 登录，登出，环境改变重置配置			
+ 升级的问题 ==》app启动的时候是否要重新配置
+ 
+ Debug =&gt; iOS  其他
+ Release =&gt; iOS appstore + testflight
+</code></pre>
 </li>
 <li>
 <p>权限相关的都打印(INFO)
@@ -78,7 +87,7 @@
 应用权限</p>
 </li>
 <li>
-<p>重要流程信息打印(INFO)
+<p><strong>重要流程信息打印(INFO)</strong>
 收发消息，通知，incoming call</p>
 </li>
 <li>
@@ -88,16 +97,40 @@
 <p>非预期结果打印（WARN）</p>
 </li>
 <li>
-<p>隐私信息
+<p><strong>隐私信息</strong>
 Log.i(&quot;call phone&quot;)
 SLog.i(&quot;number:186111111111&quot;)
 非生产环境： 打印SLog
 生产环境：DEBUG打印， RELEASE 不打印SLog</p>
-<p>TAG, 功能
-File + Function + Line ==&gt;Android
-Message</p>
+</li>
+<li>
+<p><strong>日志打印规范</strong>
+Feature + File + Function + LineNumber + Message</p>
+</li>
+<li>
+<p>日志管理分析工具</p>
+</li>
+<li>
+<p><strong>日志打印工具（性能，缓存）</strong>
+**基于 mmap **
+mmap 是使用逻辑内存对磁盘文件进行映射，中间只是进行映射没有任何拷贝操作，避免了写文件的数据拷贝。操作内存就相当于在操作文件，避免了内核空间和用户空间的频繁切换。</p>
 </li>
 </ol>
+<p>使用mmap还能保证日志的完整性，因为如下这些情况下回自动回写磁盘：</p>
+<p>内存不足
+进程 crash
+调用 msync 或者 munmap
+不设置 MAP_NOSYNC 情况下 30s-60s(仅限FreeBSD)</p>
+<p><strong>开源日志系统</strong>
+微信 XLog https://mp.weixin.qq.com/s/cnhuEodJGIbdodh0IxNeXQ  https://github.com/Tencent/mars#mars_cn
+Log4a https://pqpo.me/2018/01/17/log4a-principle-analysis/ https://github.com/pqpo/Log4a</p>
+<p>更新下目前的进度
+======================TODO=============
+1.Android,iOS 提供打印隐私日志的接口(SLog)
+2.默认log开关，用户没配置的时候，只修改开关，不保存配置</p>
+<p>======================Done=============
+1.Android 日志自动加方法及行数
+2.CoreLib默认打印输出info级别</p>
 
             </div>
           </article>
